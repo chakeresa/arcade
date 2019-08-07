@@ -67,9 +67,12 @@ router.put("/:gameId", function (req, res, next) {
 
 /*DELETE existing game*/
 router.delete("/:gameId", function (req, res, next) {
-  Game.findByPk(req.params.gameId)
+  Game.destroy({
+    where: {
+      id: req.params.gameId
+    }
+  })
     .then(game => {
-      game.destroy();
       res.setHeader("Content-Type", "application/json");
       res.status(204).send(JSON.stringify(game));
     })
