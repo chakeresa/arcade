@@ -57,7 +57,7 @@ router.put("/:gameId", function (req, res, next) {
         active: req.body.active
       });
       res.setHeader("Content-Type", "application/json");
-      res.status(201).send(JSON.stringify(game));
+      res.status(200).send(JSON.stringify(game));
     })
     .catch(error => {
       res.setHeader("Content-Type", "application/json");
@@ -71,7 +71,7 @@ router.delete("/:gameId", function (req, res, next) {
     .then(game => {
       game.destroy();
       res.setHeader("Content-Type", "application/json");
-      res.status(201).send(JSON.stringify(game));
+      res.status(204).send(JSON.stringify(game));
     })
     .catch(error => {
       res.setHeader("Content-Type", "application/json");
