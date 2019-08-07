@@ -57,7 +57,24 @@ router.put("/:gameId", function (req, res, next) {
         active: req.body.active
       });
       res.setHeader("Content-Type", "application/json");
-      res.status(201).send(JSON.stringify(game));
+      res.status(200).send(JSON.stringify(game));
+    })
+    .catch(error => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(500).send({ error });
+    });
+});
+
+/*DELETE existing game*/
+router.delete("/:gameId", function (req, res, next) {
+  Game.destroy({
+    where: {
+      id: req.params.gameId
+    }
+  })
+    .then(game => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(204).send(JSON.stringify());
     })
     .catch(error => {
       res.setHeader("Content-Type", "application/json");
