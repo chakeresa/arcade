@@ -48,16 +48,23 @@ router.post("/", function (req, res, next) {
 
 /*PUT update existing game*/
 router.put("/:gameId", function (req, res, next) {
-  Game.findByPk(req.params.gameId)
-    .then(game => {
-      game.update({
-        title: req.body.title,
-        price: req.body.price,
-        releaseYear: req.body.releaseYear,
-        active: req.body.active
-      });
+  Game.update(
+    {
+      title: req.body.title,
+      price: req.body.price,
+      releaseYear: req.body.releaseYear,
+      active: req.body.active
+    }, 
+    {
+      returning: true,
+      where: {
+        id: req.params.gameId
+      }
+    }
+  )
+    .then(([affectedCount, affectedRows]) => {
       res.setHeader("Content-Type", "application/json");
-      res.status(200).send(JSON.stringify(game));
+      res.status(200).send(JSON.stringify(affectedRows[0]));
     })
     .catch(error => {
       res.setHeader("Content-Type", "application/json");
