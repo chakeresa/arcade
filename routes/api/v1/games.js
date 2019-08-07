@@ -65,4 +65,18 @@ router.put("/:gameId", function (req, res, next) {
     });
 });
 
+/*DELETE existing game*/
+router.delete("/:gameId", function (req, res, next) {
+  Game.findByPk(req.params.gameId)
+    .then(game => {
+      game.destroy();
+      res.setHeader("Content-Type", "application/json");
+      res.status(201).send(JSON.stringify(game));
+    })
+    .catch(error => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(500).send({ error });
+    });
+});
+
 module.exports = router; //this should stay at the bottom of the file
