@@ -1,26 +1,26 @@
 {
   "development": {
-    "username": "root",
+    "username": "chakeresa",
     "password": null,
-    "database": "database_development",
+    "database": "arcade_development",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "postgres",
     "operatorsAliases": false
   },
   "test": {
-    "username": "root",
+    "username": "chakeresa",
     "password": null,
-    "database": "database_test",
+    "database": "arcade_test",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "postgres",
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
+    "username": "chakeresa",
     "password": null,
-    "database": "database_production",
+    "database": "arcade_production",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "postgres",
     "operatorsAliases": false
   }
 }
