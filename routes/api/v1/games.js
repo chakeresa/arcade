@@ -15,4 +15,17 @@ router.get("/", function (req, res, next) {
     });
 });
 
+/* GET one game */
+router.get("/:gameId", function (req, res, next) {
+  Game.findByPk(req.params.gameId)
+    .then(game => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).send(JSON.stringify(game));
+    })
+    .catch(error => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(500).send({ error })
+    });
+});
+
 module.exports = router; //this should stay at the bottom of the file
