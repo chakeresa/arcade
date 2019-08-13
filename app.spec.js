@@ -24,4 +24,29 @@ describe('api', () => {
         )
     })
   })
+
+  describe('Test the games index path', () => {
+    test('should return 200', () => {
+      return request(app).get('/api/v1/games')
+        .then(
+          response => {
+            expect(response.statusCode).toBe(200)
+          }
+        )
+    })
+
+    test('should return all games', () => {
+      return request(app).get('/api/v1/games')
+        .then(
+          response => {
+            expect(response.body.length).toBe(4),
+            expect(Object.keys(response.body[0])).toContain('title'),
+            expect(Object.keys(response.body[0])).toContain('price'),
+            expect(Object.keys(response.body[0])).toContain('releaseYear'),
+            expect(Object.keys(response.body[0])).toContain('active'),
+            expect(Object.keys(response.body[0])).toContain('StoreId')
+          }
+        )
+    })
+  })
 })
