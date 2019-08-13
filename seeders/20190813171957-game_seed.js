@@ -8,6 +8,7 @@ module.exports = {
       price: 50,
       releaseYear: 1982,
       active: true,
+      StoreId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -16,6 +17,7 @@ module.exports = {
       price: 100,
       releaseYear: 1981,
       active: true,
+      StoreId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -24,6 +26,7 @@ module.exports = {
       price: 75,
       releaseYear: 1982,
       active: false,
+      StoreId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -32,6 +35,7 @@ module.exports = {
       price: 125,
       releaseYear: 1981,
       active: true,
+      StoreId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     }
