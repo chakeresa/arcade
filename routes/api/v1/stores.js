@@ -5,6 +5,11 @@ var Store = require ('../../../models').Store;
 /* GET all stores */
 router.get("/", function (req, res, next) {
   Store.findAll()
+  // Store.findAll({
+  //   include: [{
+  //     model: Games
+  //   }]
+  // })
     .then(stores => {
       res.setHeader("Content-Type", "application/json");
       res.status(200).send(JSON.stringify(stores));
