@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     phoneNumber: DataTypes.BIGINT
   }, {});
   Store.associate = function(models) {
-    // associations can be defined here
+    Store.hasMany(models.Game, {as: 'games'})
   };
   return Store;
 };
