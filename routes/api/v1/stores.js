@@ -36,10 +36,8 @@ router.get("/:storeId", function (req, res, next) {
 /*POST new store*/
 router.post("/", function (req, res, next) {
   Store.create({
-    title: req.body.title,
-    price: req.body.price,
-    releaseYear: req.body.releaseYear,
-    active: req.body.active
+    name: req.body.name,
+    phoneNumber: req.body.phoneNumber
   })
     .then(store => {
       res.setHeader("Content-Type", "application/json");
@@ -55,10 +53,8 @@ router.post("/", function (req, res, next) {
 router.put("/:storeId", function (req, res, next) {
   Store.update(
     {
-      title: req.body.title,
-      price: req.body.price,
-      releaseYear: req.body.releaseYear,
-      active: req.body.active
+      name: req.body.name,
+      phoneNumber: req.body.phoneNumber
     }, 
     {
       returning: true,
