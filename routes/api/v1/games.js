@@ -31,25 +31,27 @@ router.get("/:gameId", function (req, res, next) {
 /*POST new game*/
 router.post("/", function (req, res, next) {
   Game.create({
+    StoreId: req.body.StoreId,
     title: req.body.title,
     price: req.body.price,
     releaseYear: req.body.releaseYear,
     active: req.body.active
   })
-    .then(game => {
-      res.setHeader("Content-Type", "application/json");
-      res.status(201).send(JSON.stringify(game));
-    })
-    .catch(error => {
-      res.setHeader("Content-Type", "application/json");
-      res.status(500).send({ error });
-    });
+  .then(game => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(201).send(JSON.stringify(game));
+  })
+  .catch(error => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(500).send({ error });
+  });
 });
 
 /*PUT update existing game*/
 router.put("/:gameId", function (req, res, next) {
   Game.update(
     {
+      StoreId: req.body.StoreId,
       title: req.body.title,
       price: req.body.price,
       releaseYear: req.body.releaseYear,
